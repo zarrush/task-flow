@@ -1,0 +1,86 @@
+# =========================
+
+# Frontend - React / Vite
+
+# =========================
+
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# Logs
+
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# =========================
+
+# Backend - Django / Python
+
+# =========================
+
+backend/venv/
+backend/.venv/
+backend/**pycache**/
+backend/**/*.py[cod]
+backend/*.py[cod]
+
+# Django
+
+backend/db.sqlite3
+backend/db.sqlite3-journal
+backend/media/
+
+# Environment variables
+
+backend/.env
+backend/.env.*
+
+# Logs
+
+backend/*.log
+
+# =========================
+
+# IDE / OS
+
+# =========================
+
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# =========================
+
+# Python cache
+
+# =========================
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+
+# General
+
+# =========================
+
+*.local
+*.tmp
+*.temp
+Thumbs.db

@@ -1,0 +1,10 @@
+# tasks/serializers.py
+from rest_framework import serializers
+from .models import Task
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ['id', 'title', 'description', 'due_date', 'priority', 
+                  'is_completed', 'is_archived', 'created_at', 'updated_at', 'completed_at']
+        read_only_fields = ['id', 'created_at', 'updated_at']  # اینا رو کاربر نمی‌تونه تغییر بده
