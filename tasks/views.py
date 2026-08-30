@@ -1,4 +1,3 @@
-# tasks/views.py
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -7,15 +6,6 @@ from .models import Task
 from .serializers import TaskSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
-    """
-    این ViewSet خودش همه CRUD رو هندل می‌کنه:
-    - GET /api/tasks/ -> لیست تسک‌ها
-    - POST /api/tasks/ -> ساخت تسک
-    - GET /api/tasks/{id}/ -> جزئیات تسک
-    - PUT /api/tasks/{id}/ -> ویرایش کامل
-    - PATCH /api/tasks/{id}/ -> ویرایش جزئی
-    - DELETE /api/tasks/{id}/ -> حذف
-    """
     serializer_class = TaskSerializer
 
     def get_queryset(self):

@@ -59,6 +59,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database - Postgres
+# backend/settings.py
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -66,7 +68,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',  # <--- اینجا رو هم به 5433 تغییر بده
     }
 }
 
@@ -94,3 +96,8 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 }
 
+# backend/settings.py
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # اختیاری ولی پیشنهاد میشه

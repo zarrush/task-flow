@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15
+    container_name: taskmanager_db
+    environment:
+      POSTGRES_DB: taskmanager
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"  # <--- اینجا رو تغییر دادیم (سمت چپ 5433، سمت راست 5432 بمونه)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
