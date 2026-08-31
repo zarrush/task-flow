@@ -1,8 +1,25 @@
 // src/pages/Tasks.jsx
+import { useOutletContext } from 'react-router-dom';
+
 export default function Tasks() {
+  const { currentPlan } = useOutletContext();
+
+  const planInfo = {
+    daily: { title: 'Daily Planning', description: 'View your tasks for today' },
+    weekly: { title: 'Weekly Planning', description: 'View your tasks for this week' },
+    monthly: { title: 'Monthly Planning', description: 'View your tasks for this month' },
+    yearly: { title: 'Yearly Planning', description: 'View your tasks for this year' },
+  };
+
+  const { title, description } = planInfo[currentPlan] || planInfo.daily;
+
   return (
     <div className="space-y-6">
-      {/* سرچ باکس و دکمه‌ها */}
+      <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+        <h2 className="text-xl font-bold text-indigo-700">{title}</h2>
+        <p className="text-sm text-indigo-600">{description}</p>
+      </div>
+
       <div className="flex items-center gap-4">
         <input
           type="text"
@@ -14,7 +31,6 @@ export default function Tasks() {
         </button>
       </div>
 
-      {/* لیست تسک‌ها */}
       <div className="space-y-4">
         {[1, 2, 3, 4].map((i) => (
           <div key={i} className="bg-slate-50 hover:bg-slate-100 p-5 rounded-xl border border-slate-200 flex items-center justify-between transition">
