@@ -10,12 +10,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* صفحه لاگین Layout نداره (هدر و سایدبار نمی‌خواد) */}
+        {/* صفحه لاگین بدون Layout */}
         <Route path="/login" element={<Login />} />
 
-        {/* بقیه صفحات داخل Layout مشترک هستن */}
+        {/* بقیه صفحات داخل Layout */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Tasks />} /> {/* پیش‌فرض میره تو تسک‌ها */}
+          <Route path="/" element={<Tasks />} />
+          <Route path="/tasks" element={<Tasks />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
