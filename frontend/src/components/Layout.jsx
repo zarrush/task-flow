@@ -1,31 +1,32 @@
 // src/components/Layout.jsx
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Footer from './Footer';
 
 export default function Layout() {
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* سایدبار */}
-      <aside className="w-64 bg-gray-800 text-white p-5 flex flex-col">
-        <h2 className="text-xl font-bold mb-10">برند</h2>
-        <nav className="flex flex-col gap-4">
-          <Link to="/tasks" className="hover:text-gray-300">تسک‌ها</Link>
-          <Link to="/dashboard" className="hover:text-gray-300">داشبورد</Link>
-          <Link to="/profile" className="hover:text-gray-300">پروفایل</Link>
-        </nav>
-        {/* فوتر رو می‌تونیم پایین سایدبار یا پایین کل صفحه بذاریم */}
-        <footer className="mt-auto text-sm text-gray-400">فوتر</footer>
-      </aside>
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 p-6 space-y-6">
+      
+      {/* هدر - کاملاً جدا */}
+      <Header />
 
-      {/* محتوای اصلی */}
-      <main className="flex-1 overflow-y-auto">
-        {/* هدر */}
-        <header className="bg-white p-4 shadow-sm">
-          <h1 className="text-lg font-semibold">هدر</h1>
-        </header>
+      {/* بدنه اصلی - سایدبار و محتوا در یک container ولی جدا از هم */}
+      <div className="flex gap-6 min-h-[60vh]">
+        {/* سایدبار - کارت جدا */}
+        <aside className="w-64 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 p-6">
+          <Sidebar />
+        </aside>
 
-        {/* اینجا محتوای صفحات (Tasks, Dashboard, Profile) لود میشه */}
-        <Outlet />
-      </main>
+        {/* محتوای اصلی - کارت جدا */}
+        <main className="flex-1 bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl border border-white/50 p-8 overflow-y-auto">
+          <Outlet />
+        </main>
+      </div>
+
+      {/* فوتر - کاملاً جدا */}
+      <Footer />
+      
     </div>
   );
 }

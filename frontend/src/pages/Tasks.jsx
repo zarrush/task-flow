@@ -1,48 +1,38 @@
 // src/pages/Tasks.jsx
-import { useEffect, useState } from 'react';
-import api from '../api/axios';
-
 export default function Tasks() {
-  const [message, setMessage] = useState('در حال بررسی اتصال...');
-
-  useEffect(() => {
-    const testConnection = async () => {
-      try {
-        // تلاش برای گرفتن لیست تسک‌ها از بک‌اند
-        const response = await api.get('/tasks/');
-        setMessage('✅ اتصال موفقیت‌آمیز بود! دیتا دریافت شد.');
-        console.log('Data from backend:', response.data);
-      } catch (error) {
-        // اگر ارور داد، ببینیم چه اروری بوده
-        if (error.response) {
-          // اگر بک‌اند جواب داد ولی مثلاً گفت توکن نداری (ارور 401)
-          if (error.response.status === 401) {
-            setMessage('✅ اتصال برقراره! (بک‌اند گفت برای دیدن تسک‌ها باید لاگین کنی - ارور 401)');
-          } else {
-            setMessage(`❌ بک‌اند جواب داد ولی ارور داد: ${error.response.status}`);
-          }
-        } else {
-          // اگر کلاً بک‌اند پیدا نشد (مثلاً خاموشه یا CORS مشکل داره)
-          setMessage('❌ اتصال برقرار نشد! (بک‌اند خاموشه یا مشکل CORS داریم)');
-          console.error('Connection Error:', error);
-        }
-      }
-    };
-
-    testConnection();
-  }, []);
-
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">صفحه مدیریت تسک‌ها</h1>
-      
-      {/* این باکس نتیجه تست رو نشون میده */}
-      <div className={`p-4 rounded-lg border ${message.includes('✅') ? 'bg-green-100 border-green-500 text-green-800' : 'bg-red-100 border-red-500 text-red-800'}`}>
-        <p className="font-bold">وضعیت اتصال به بک‌اند:</p>
-        <p>{message}</p>
+    <div className="space-y-6">
+      {/* سرچ باکس و دکمه‌ها */}
+      <div className="flex items-center gap-4">
+        <input
+          type="text"
+          placeholder="Search tasks..."
+          className="flex-1 px-6 py-3 bg-slate-50 border border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+        />
+        <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-full font-medium transition shadow-lg hover:shadow-xl">
+          + New Task
+        </button>
       </div>
 
-      <p className="text-gray-600 mt-4">برای دیدن جزئیات دقیق‌تر، کلید F12 رو بزن و تب Console رو چک کن.</p>
+      {/* لیست تسک‌ها */}
+      <div className="space-y-4">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="bg-slate-50 hover:bg-slate-100 p-5 rounded-xl border border-slate-200 flex items-center justify-between transition">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                {i}
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-800">Sample Task {i}</h3>
+                <p className="text-sm text-slate-500">Description goes here...</p>
+              </div>
+            </div>
+            <span className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">
+              High Priority
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

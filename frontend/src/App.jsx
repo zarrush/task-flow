@@ -16,7 +16,6 @@ function App() {
         {/* بقیه صفحات داخل Layout مشترک هستن */}
         <Route element={<Layout />}>
           <Route path="/" element={<Tasks />} /> {/* پیش‌فرض میره تو تسک‌ها */}
-          <Route path="/tasks" element={<Tasks />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
