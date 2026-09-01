@@ -23,8 +23,8 @@ INSTALLED_APPS = [
     'corsheaders',
     
     # Local apps
-    'tasks',
-    'accounts',
+    'backend.tasks',      
+    'backend.accounts',
 ]
 
 MIDDLEWARE = [
